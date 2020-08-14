@@ -1,0 +1,28 @@
+.side-bar
+  .side-bar__user-frame
+    .side-bar__user-frame__top-items
+      %p.side-bar__user-frame__user-name
+        さいとう
+      %ul.side-bar__user-frame__menu
+        %li.side-bar__user-frame__edit
+          = link_to "#" do
+            = icon('fas', 'edit')
+        %li.side-bar__user-frame__cog
+          = link_to "#" do
+            = icon('fa', 'cog')
+  .side-bar__group-frame
+    %ul.side-bar__group-frame__group-list
+      %li.side-bar__group-frame__group-list__group-name
+        グループ名
+      %li.side-bar__group-frame__group-list__message
+        メッセージ
+    %ul.side-bar__group-frame__group-list
+      %li.side-bar__group-frame__group-list__group-name
+        グループ名2
+      %li.side-bar__group-frame__group-list__message
+        メッセージ2
+    %ul.side-bar__group-frame__group-list
+      %li.side-bar__group-frame__group-list__group-name
+        グループ名3
+      %li.side-bar__group-frame__group-list__message
+        メッセージ3
