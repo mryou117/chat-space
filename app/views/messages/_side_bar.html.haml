@@ -5,24 +5,27 @@
         = current_user.name
       %ul.side-bar__user-frame__menu
         %li.side-bar__user-frame__edit
-          = link_to "#" do
+          = link_to new_group_path(current_user) do
             = icon('fas', 'edit')
         %li.side-bar__user-frame__cog
           = link_to edit_user_path(current_user) do
             = icon('fa', 'cog')
+            
   .side-bar__group-frame
-    %ul.side-bar__group-frame__group-list
-      %li.side-bar__group-frame__group-list__group-name
-        グループ名
-      %li.side-bar__group-frame__group-list__message
-        メッセージ
-    %ul.side-bar__group-frame__group-list
-      %li.side-bar__group-frame__group-list__group-name
-        グループ名2
-      %li.side-bar__group-frame__group-list__message
-        メッセージ2
-    %ul.side-bar__group-frame__group-list
-      %li.side-bar__group-frame__group-list__group-name
-        グループ名3
-      %li.side-bar__group-frame__group-list__message
-        メッセージ3
+    - current_user.groups.each do |group|
+      %ul.side-bar__group-frame__group-list
+        = link_to '#' do
+          %li.side-bar__group-frame__group-list__group-name
+            = group.name
+          %li.side-bar__group-frame__group-list__message
+            メッセージ
+    -# %ul.side-bar__group-frame__group-list
+    -#   %li.side-bar__group-frame__group-list__group-name
+    -#     グループ名2
+    -#   %li.side-bar__group-frame__group-list__message
+    -#     メッセージ2
+    -# %ul.side-bar__group-frame__group-list
+    -#   %li.side-bar__group-frame__group-list__group-name
+    -#     グループ名3
+    -#   %li.side-bar__group-frame__group-list__message
+    -#     メッセージ3
