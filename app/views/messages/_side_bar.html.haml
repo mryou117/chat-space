@@ -12,13 +12,15 @@
             = icon('fa', 'cog')
             
   .side-bar__group-frame
+    -# ログイン中のユーザーが属しているグループをアソシエーションで取得し、一覧表示
     - current_user.groups.each do |group|
       %ul.side-bar__group-frame__group-list
-        = link_to '#' do
+        = link_to group_messages_path(group) do
           %li.side-bar__group-frame__group-list__group-name
             = group.name
           %li.side-bar__group-frame__group-list__message
-            メッセージ
+            = group.show_last_message
+
     -# %ul.side-bar__group-frame__group-list
     -#   %li.side-bar__group-frame__group-list__group-name
     -#     グループ名2

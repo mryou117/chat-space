@@ -1,48 +1,60 @@
 .main-chat
   .main-chat__group-info
     .main-chat__group-info__group-name
-      グループネーム
+      = @group.name
       %ul.member-list
         Member：
-        %li.member-list__name
-          さいとう
-        %li.member-list__name
-          なかがみ
+        - @users.each do |user|
+          %li.member-list__name
+            = user.name
     .main-chat__group-info__edit-btn
-      = link_to edit_group_path(current_user) do
+      = link_to edit_group_path(@group.id) do
         Edit
 
   .main-chat__message-list
-    .main-chat__message-list__message-box
-      %ul.message-date
-        %li.message-date__user-name
-          さいとう
-          .message-date__user-name__date-time
-            2020/08/10(mon) 18:13:02
-        %li.message-date__message
-          おはよう！
-    .main-chat__message-list__message-box
-      %ul.message-date
-        %li.message-date__user-name
-          なかがみ
-          .message-date__user-name__date-time
-            2020/08/10(mon) 18:13:02
-        %li.message-date__message
-          おはよう！
-    .main-chat__message-list__message-box
-      %ul.message-date
-        %li.message-date__user-name
-          さいとう
-          .message-date__user-name__date-time
-            2020/08/10(mon) 18:13:02
-        %li.message-date__message
-          おはよう！
+    = render partial: 'message', collection: @messages
+    
+  
+    -# .main-chat__message-list__message-box
+    -#   %ul.message-date
+    -#     %li.message-date__user-name
+    -#       さいとう
+    -#       .message-date__user-name__date-time
+    -#         2020/08/10(mon) 18:13:02
+    -#     %li.message-date__message
+    -#       おはよう！
+    -# .main-chat__message-list__message-box
+    -#   %ul.message-date
+    -#     %li.message-date__user-name
+    -#       なかがみ
+    -#       .message-date__user-name__date-time
+    -#         2020/08/10(mon) 18:13:02
+    -#     %li.message-date__message
+    -#       おはよう！
+    -# .main-chat__message-list__message-box
+    -#   %ul.message-date
+    -#     %li.message-date__user-name
+    -#       さいとう
+    -#       .message-date__user-name__date-time
+    -#         2020/08/10(mon) 18:13:02
+    -#     %li.message-date__message
+    -#       おはよう！
+
+  -# .main-chat__message-form
+  -#   %form.new-message
+  -#     .input-box
+  -#       %input{type: "text", class: "input-box__text", placeholder: "type a message" }
+  -#       %label{class: "input-box__image"}
+  -#         = icon('fas', 'image')
+  -#         %input{type: "file", class: "input-box__image__file"}
+  -#     %input{type: "submit", class: "submit-btn", value: "Send"}
 
   .main-chat__message-form
-    %form.new-message
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
       .input-box
-        %input{type: "text", class: "input-box__text", placeholder: "type a message" }
-        %label{class: "input-box__image"}
-          = icon('fas', 'image')
-          %input{type: "file", class: "input-box__image__file"}
-      %input{type: "submit", class: "submit-btn", value: "Send"}
+        = f.text_field :content, class: "input-box__text", placeholder: 'type a message'
+        = f.label :image, class: "input-box__image" do
+          = icon('fas', 'image', class: "input-box__image__file")
+          = f.file_field :image, class: 'Hidden'
+      = f.submit 'Send', class: "submit-btn"
+
