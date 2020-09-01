@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :group_users
   has_many :groups, through: :group_users
+  has_many :messages
         #  中間テーブルを作成したので必要なくなった？
   # validates :name, presence: true, uniqueness: true 
 end
