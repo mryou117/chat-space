@@ -16,7 +16,6 @@ $(function(){
             <img class="Message__image" src="${message.image}">
           </ul>
         </div>`
-        // img class位置調整の必要あるかも
       return html;
     } else {
       let html =
@@ -52,7 +51,6 @@ $(function(){
     .done(function(data){
       let html = buildHTML(data)
       $('.main-chat__message-list').append(html) .animate({ scrollTop: $('.main-chat__message-list')[0].scrollHeight});
-      // $('input[name="commit"]').prop('disabled', false);
       $('.submit-btn').prop('disabled', false);
       $('form')[0].reset();
     })
