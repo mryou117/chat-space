@@ -47,7 +47,7 @@
     background-color: #2f3e51;
     height: calc(100vh - 100px);
     overflow: scroll;
-    overflow: hidden;
+    // overflow: hidden;
     &__group-list {
       padding: 20px 20px 40px;
       a {
@@ -107,9 +107,10 @@
   &__message-list {
     background-color: #fafafa;
     height: calc(100vh - 190px);
+    overflow: scroll;
     &__message-box {
       padding: 35px 0 0 40px;
-      .message-date {
+      .message-data {
         &__user-name {
           display: flex;
           color: #333333;
