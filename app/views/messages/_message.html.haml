@@ -1,10 +1,10 @@
 .main-chat__message-list__message-box
-  %ul.message-date
-    %li.message-date__user-name
+  %ul.message-data
+    %li.message-data__user-name
       = message.user.name
-      .message-date__user-name__date-time
+      .message-data__user-name__date-time
         = message.created_at.strftime("%Y年%m月%d日 %H時%M分")
-    %li.message-date__message
+    %li.message-data__message
       - if message.content.present?
         = message.content
       = image_tag message.image.url, class: 'Message__image' if message.image.present?
