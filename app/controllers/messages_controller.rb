@@ -4,7 +4,7 @@ class MessagesController < ApplicationController
   def index
     @users = User.all
     # @user = User.new
-    # グループに所属しているUserを取得？
+    # グループに所属しているUserを取得
     @users = @group.users
     @message = Message.new
     @messages = @group.messages.includes(:user)
