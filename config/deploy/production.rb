@@ -61,3 +61,7 @@
 #   }
 
 server '54.168.111.158', user: 'ec2-user', roles: %w{app db web}
+
+set :rails_env, "production"
+set :unicorn_rack_env, "production"
+# unicornが現在の環境を本番環境として認識
